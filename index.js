@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Mastodon from 'mastodon-api';
 import dotenv from 'dotenv';
 import sqlite3 from 'sqlite3';
 import { open } from 'sqlite';
