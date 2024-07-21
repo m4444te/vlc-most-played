@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', async () => {
   let songs = await fetchSongs();
+  let sortDirection = 'desc'; // Default sort direction
   renderSongs(songs);
 
   const sortableHeader = document.querySelector('.sortable');
   sortableHeader.addEventListener('click', () => {
-    const sortedSongs = sortSongsByPlayCount(songs);
-    toggleSortIcon(sortableHeader);
+    sortDirection = toggleSortDirection(sortDirection);
+    const sortedSongs = sortSongsByPlayCount(songs, sortDirection);
+    toggleSortIcon(sortableHeader, sortDirection);
     renderSongs(sortedSongs);
   });
 });
@@ -40,20 +42,27 @@ function renderSongs(songs) {
   }
 }
 
-function sortSongsByPlayCount(songs) {
-  return songs.sort((a, b) => b.play_count - a.play_count);
+function sortSongsByPlayCount(songs, direction) {
+  return songs.sort((a, b) => {
+    if (direction === 'asc') {
+      return a.play_count - b.play_count;
+    } else {
+      return b.play_count - a.play_count;
+    }
+  });
 }
 
-function toggleSortIcon(header) {
+function toggleSortDirection(currentDirection) {
+  return currentDirection === 'asc' ? 'desc' : 'asc';
+}
+
+function toggleSortIcon(header, direction) {
   const icon = header.querySelector('i.fas');
-  if (icon.classList.contains('fa-sort')) {
-    icon.classList.remove('fa-sort');
-    icon.classList.add('fa-sort-down');
-  } else if (icon.classList.contains('fa-sort-down')) {
-    icon.classList.remove('fa-sort-down');
+  if (direction === 'asc') {
+    icon.classList.remove('fa-sort', 'fa-sort-down');
     icon.classList.add('fa-sort-up');
-  } else if (icon.classList.contains('fa-sort-up')) {
-    icon.classList.remove('fa-sort-up');
+  } else {
+    icon.classList.remove('fa-sort', 'fa-sort-up');
     icon.classList.add('fa-sort-down');
   }
 }
