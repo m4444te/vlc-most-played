@@ -4,17 +4,13 @@ A script that outputs current playing tunes and keeps plays counter in a sqlite3
 
 ## How to use
 
-Clone the repo
+Clone the repo, change directory and install dependencies
 
 ```bash
-git clone git@github.com:m4444te/vlc-most-played.git
-```
-
-Install dependencies
-
-```bash
+git clone https://github.com/m4444te/vlc-most-played.git
 cd vlc-most-played
 npm install
+
 ```
 
 Run the script
