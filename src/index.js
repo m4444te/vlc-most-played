@@ -15,7 +15,7 @@ let previousArtist = '';
 
 async function initDatabase() {
   const db = await open({
-    filename: './tunes.db',
+    filename: './data/tunes.db',
     driver: sqlite3.Database
   });
 
