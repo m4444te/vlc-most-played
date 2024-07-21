@@ -1,20 +1,19 @@
 # vlc-now-playing
 
-A script that post the current song and artist to the fediverse
+A script that outputs current playing tunes and keeps plays counter in a sqlite3 database.
 
 ## How to use
-
 
 Clone the repo
 
 ```bash
-git clone git@github.com:m4444te/vlc-now-playing.git
+git clone git@github.com:m4444te/vlc-most-played.git
 ```
 
 Install dependencies
 
 ```bash
-cd vlc-now-playing
+cd vlc-most-played
 npm install
 ```
 
