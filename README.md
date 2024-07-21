@@ -1,4 +1,4 @@
-# vlc-now-playing
+# vlc-most-played
 
 A script that outputs current playing tunes and keeps plays counter in a sqlite3 database.
 
