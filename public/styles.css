@@ -44,6 +44,17 @@ h1 {
     background-color: #343a40;
     color: #fff;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.table-header div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-header .sortable {
+    cursor: pointer;
 }
 
 .table-body {
@@ -65,4 +76,8 @@ h1 {
 
 .table-body>div:last-child {
     border-bottom: none;
+}
+
+i.fas {
+    margin-left: 5px;
 }

@@ -3,18 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Most Played Tunes on VLC</title>
+    <title>Song Plays</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
   </head>
   <body>
     <div class="container">
-      <h1>Most Played Tunes on VLC</h1>
+      <h1>Song Plays</h1>
       <div class="table-container">
         <div class="table-header">
-          <div>Title</div>
-          <div>Artist</div>
-          <div>Play Count</div>
-          <div>Last Played</div>
+          <div>Title <i class="fas"></i></div>
+          <div>Artist <i class="fas"></i></div>
+          <div class="sortable" data-sort="play_count">
+            Play Count <i class="fas fa-sort"></i>
+          </div>
+          <div>Last Played <i class="fas"></i></div>
         </div>
         <div id="songs-table" class="table-body">
           <!-- Rows will be added here by scripts.js -->
