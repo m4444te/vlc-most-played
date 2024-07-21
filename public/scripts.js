@@ -1,14 +1,20 @@
 document.addEventListener('DOMContentLoaded', async () => {
   let songs = await fetchSongs();
-  let sortDirection = 'desc'; // Default sort direction
+  let sortDirection = {
+    play_count: 'desc', // Default sort direction
+    played_at: 'desc'
+  };
   renderSongs(songs);
 
-  const sortableHeader = document.querySelector('.sortable');
-  sortableHeader.addEventListener('click', () => {
-    sortDirection = toggleSortDirection(sortDirection);
-    const sortedSongs = sortSongsByPlayCount(songs, sortDirection);
-    toggleSortIcon(sortableHeader, sortDirection);
-    renderSongs(sortedSongs);
+  const sortableHeaders = document.querySelectorAll('.sortable');
+  sortableHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const sortBy = header.dataset.sort;
+      sortDirection[sortBy] = toggleSortDirection(sortDirection[sortBy]);
+      const sortedSongs = sortSongs(songs, sortBy, sortDirection[sortBy]);
+      toggleSortIcon(header, sortDirection[sortBy]);
+      renderSongs(sortedSongs);
+    });
   });
 });
 
@@ -42,12 +48,12 @@ function renderSongs(songs) {
   }
 }
 
-function sortSongsByPlayCount(songs, direction) {
+function sortSongs(songs, sortBy, direction) {
   return songs.sort((a, b) => {
-    if (direction === 'asc') {
-      return a.play_count - b.play_count;
-    } else {
-      return b.play_count - a.play_count;
+    if (sortBy === 'play_count') {
+      return direction === 'asc' ? a.play_count - b.play_count : b.play_count - a.play_count;
+    } else if (sortBy === 'played_at') {
+      return direction === 'asc' ? new Date(a.played_at) - new Date(b.played_at) : new Date(b.played_at) - new Date(a.played_at);
     }
   });
 }
