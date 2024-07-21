@@ -1,0 +1,21 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+h1 {
+    color: #343a40;
+}
+
+.table {
+    margin-top: 20px;
+}
+
+thead th {
+    text-align: center;
+}
+
+tbody td {
+    text-align: center;
+    vertical-align: middle;
+}
