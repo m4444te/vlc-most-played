@@ -7,7 +7,7 @@ const port = 3000;
 
 async function initDatabase() {
   const db = await open({
-    filename: './songs.db',
+    filename: './tunes.db',
     driver: sqlite3.Database
   });
 
